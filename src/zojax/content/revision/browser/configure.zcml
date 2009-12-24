@@ -1,0 +1,93 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   xmlns:browser="http://namespaces.zope.org/browser"
+   i18n_domain="zojax.content.revision">
+
+  <include file="table.zcml" />
+
+  <utility
+     name="revisions"
+     component=".actions.ContentRevisions" />
+
+  <!-- edit content step -->
+  <zojax:pagelet
+     name="content"
+     type="wizard.step"
+     for="zojax.content.revision.interfaces.IRevisions
+	  zojax.content.forms.interfaces.IEditContentWizard"
+     class=".editcontent.ContentStep"
+     weight="100"
+     permission="zojax.ModifyContent" />
+
+  <zojax:pagelet
+     name="basic"
+     type="form.subform"
+     for="zojax.content.revision.interfaces.IRevisions
+	  .editcontent.ContentStep"
+     class=".editcontent.ContentBasicFields"
+     weight="10" />
+
+  <!-- revisions -->
+  <zojax:pagelet
+     name="revisions"
+     for="..interfaces.IRevisions"
+     template="revisions.pt"
+     class=".revisions.RevisionsView"
+     permission="zojax.ViewContentRevisions" />
+
+  <adapter
+     name="revision.revisions"
+     factory=".revisions.ContentRevisionsAction" />
+
+  <browser:icon
+     name="zmi_icon"
+     file="revisions.png"
+     for=".interfaces.IRevisionsAction" />
+
+  <!-- content revision -->
+  <browser:defaultView
+     name="index.html"
+     for="..interfaces.IContentRevision" />
+
+  <zojax:pagelet
+     name="index.html"
+     for="..interfaces.IContentRevision"
+     template="revision.pt"
+     class=".revision.ContentRevision"
+     permission="zojax.ViewContentRevisions" />
+
+  <zojax:pagelet
+     name="activate.html"
+     for="..interfaces.IContentRevision"
+     template="revision.pt"
+     class=".revision.ActivateRevision"
+     permission="zojax.ViewContentRevisions" />
+
+  <adapter factory=".revision.ActionsContext" />
+  <adapter factory=".revision.ContentRevisionBreadcrumb" />
+
+  <!-- working revision -->
+  <adapter
+     name="revision.working"
+     factory=".working.WorkingRevisionAction" />
+
+  <browser:icon
+     name="zmi_icon"
+     file="revisions.png"
+     for=".interfaces.IWorkingRevisionAction" />
+
+  <zojax:pagelet
+     name="workingrevision.html"
+     for="zojax.content.revision.interfaces.IRevisions"
+     template="working.pt"
+     class=".working.WorkingRevision" 
+     permission="zojax.ModifyContent" />
+
+  <!-- styles -->
+  <zojax:resourceinclude
+     name="zojax-content-revision.css"
+     file="styles.css"
+     library="zojax" type="stylesheet" filetype="zrt" />
+
+</configure>

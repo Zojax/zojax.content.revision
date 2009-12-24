@@ -1,0 +1,18 @@
+<h1>Working revision</h1>
+<br />
+
+<div class="z-content-preview">
+  <tal:block content="structure pageelement:content.header" />
+
+  <div class="z-content-body" 
+       tal:content="structure view/contentView/render"></div>
+</div>
+
+<form action="." method="post" enctype="multipart/form-data" 
+      tal:attributes="action request/URL">
+  <div class="z-form-control">
+    <br />
+    <input type="submit" class="z-form-standalonebtn"
+	   name="form.buttons.publish" value="Publish revision" />
+  </div>
+</form>
