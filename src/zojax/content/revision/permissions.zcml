@@ -1,0 +1,23 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zojax.content.revision">
+
+  <permission
+     id="zojax.ViewContentRevisions"
+     title="View content revisions" />
+
+  <grant
+     role="content.Owner"
+     permission="zojax.ViewContentRevisions" />
+
+  <zojax:permission
+     permission="zojax.ViewContentRevisions"
+     category="zojax.content.permissions.interfaces.IViewPermission" />
+
+  <zojax:contentpermission
+     permission="zojax.ViewContentRevisions"
+     managepermission="zojax.ManageViewPermission"
+     category="zojax.content.permissions.interfaces.IViewPermission" />
+
+</configure>

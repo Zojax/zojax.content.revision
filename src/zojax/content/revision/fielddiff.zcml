@@ -1,0 +1,8 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <adapter factory=".fielddiff.TextDiff" />
+  <adapter factory=".fielddiff.TextLineDiff" />
+  <adapter factory=".fielddiff.CollectionDiff" />
+  <adapter factory=".fielddiff.RichTextDiff" />
+
+</configure>

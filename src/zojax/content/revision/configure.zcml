@@ -1,0 +1,30 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:i18n="http://namespaces.zope.org/i18n"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zojax.content.revision">
+
+  <include file="permissions.zcml" />
+  
+  <!-- IContentData -->
+  <subscriber handler=".data.contentModifiedHandler" />
+
+  <!-- publish revision on draft publishing -->
+  <subscriber handler=".draft.draftPublishedHandler" />
+
+  <!-- browser views -->
+  <include package=".browser" />
+
+  <!-- schema diff -->
+  <include file="fielddiff.zcml" />
+
+  <!-- translations -->
+  <i18n:registerTranslations directory="locales" />
+
+  <!-- generations -->
+  <utility
+     name="zojax.content.revision"
+     provides="zope.app.generations.interfaces.ISchemaManager"
+     component=".generations.schemaManager" />
+
+</configure>

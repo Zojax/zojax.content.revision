@@ -1,0 +1,37 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <!-- content.revisions table -->
+  <adapter
+     name="content.revisions"
+     provides="zope.contentprovider.interfaces.IContentProvider"
+     factory=".table.RevisionsTable" />
+
+  <adapter
+     name="rev1"
+     factory=".table.Rev1Column" />
+
+  <adapter
+     name="rev2"
+     factory=".table.Rev2Column" />
+
+  <adapter
+     name="id"
+     factory=".table.IdColumn" />
+
+  <adapter
+     name="principal"
+     factory=".table.PrincipalColumn" />
+
+  <adapter
+     name="date"
+     factory=".table.DateColumn" />
+
+  <adapter
+     name="note"
+     factory=".table.NoteColumn" />
+
+  <adapter
+     name="active"
+     factory=".table.ActiveColumn" />
+
+</configure>

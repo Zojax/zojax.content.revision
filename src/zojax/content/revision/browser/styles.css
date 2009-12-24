@@ -1,0 +1,85 @@
+/* zrt-cssregistry: */
+
+@media all {
+
+  .revision-data {
+    margin-top: 2em;
+    margin-bottom: 1em;
+    color: fontColor;
+    background-color: backgroundColor;
+    padding: 0.5em 1em 0.5em 1em;
+  }
+
+  .revision-data-value { 
+    font-size: 120%;
+  }
+
+  .revision-diff { 
+    overflow: hidden;
+    margin-top: 2em;
+    margin-bottom: 1em;
+  }
+
+  .revision-diff-tag {
+    font-weight: bold;
+  }
+
+  .revision-diff-added {
+    color: green;
+  }
+
+  .revision-diff-removed {
+    color: notifyBorderColor;
+    text-decoration: line-through;
+  }
+
+  .revision-information {
+    clear: both;
+    float: right;
+    font-size: 90%;
+    padding-left: 1em;
+    padding-bottom: 0.5em;
+    background-color: transparent;
+    background: contentBackgroundColor;
+  }
+
+  .revision-information table {
+    margin-top: 0.75em;
+    background: contentBackgroundColor;
+    border-top: borderWidth borderStyle globalBorderColor;
+  }
+
+  .revision-information a {
+    text-decoration: none;
+  }
+
+  .revision-information a:hover {
+    text-decoration: underline;
+  }
+
+  .revision-information tr {
+    vertical-align: top;
+  }
+
+  .revision-information td {
+    border-right: borderWidth borderStyle globalBorderColor;
+    border-bottom: borderWidth borderStyle globalBorderColor;
+    padding: 0.2em 0.5em;
+    width: 50%;
+  }
+
+  .revision-information th {
+    background-color: globalBackgroundColor;
+    border-left: borderWidth borderStyle globalBorderColor;
+    border-right: borderWidth borderStyle globalBorderColor;
+    border-bottom: borderWidth borderStyle globalBorderColor;
+    color: discreetColor;
+    white-space: nowrap;
+    padding: 0.2em 0.5em;
+  }
+
+  #content-widgets-__note__ { 
+    width: 80%;
+  }
+
+}

@@ -1,0 +1,30 @@
+<h1 class="z-content-title">
+  Revision <tal:block content="view/revidtitle" />,
+
+  <tal:block tal:condition="view/active">
+    active revision</tal:block>
+  <tal:block tal:condition="not:view/active">
+    inactive revision</tal:block>
+</h1>
+<div class="z-content-description">
+  <span class="discreet">Note:</span>
+  <tal:block content="context/__note__|string:No comment" /></div>
+<br />
+
+<div class="z-content-preview">
+  <tal:block define="context nocall:view/content"
+	     content="structure pageelement:content.header" />
+
+  <div class="z-content-body"
+       tal:content="structure view/contentView/render"></div>
+</div>
+
+<form method="post" tal:attributes="action request/URL"
+      tal:condition="python:not view.active and view.modify">
+  <br />
+  <div class="z-form-controls">
+    <hr />
+    <input type="submit" name="form.button.makeactive" class="z-form-button"
+	   value="Activate revision" />
+  </div>
+</form>

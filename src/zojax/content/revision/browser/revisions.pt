@@ -1,0 +1,67 @@
+<tal:block  tal:condition="not:view/compared|nothing">
+  <h1>Revisions for: <tal:block content="context/title" /></h1>
+  <tal:block tal:content="structure pageelement:content.byline" />
+  <tal:block tal:content="structure pageelement:content.description" />
+  <br />
+
+  <form tal:attributes="action request/URL" method="post">
+    <tal:block content="structure view/revisions/render" />
+
+    <div class="z-form-controls" tal:condition="view/revisions">
+      <hr />
+      <input type="submit" name="form.button.compare" value="Compare" 
+	     class="z-form-button" />
+    </div>
+  </form>
+</tal:block>
+
+<div tal:condition="view/compared|nothing">
+  <h1>Compare revisions for: <tal:block content="context/title" /></h1>
+  <tal:block tal:content="structure pageelement:content.byline" />
+  <tal:block tal:content="structure pageelement:content.description" />
+  <br />
+
+  <div class="z-table-container">
+    <table class="z-table">
+      <thead>
+	<tr>
+	  <th></th>
+	  <th>Revision <tal:block content="view/rev1/__name__" /></th>
+	  <th>Revision <tal:block content="view/rev2/__name__" /></th>
+	</tr>
+      </thead>
+      <tbody>
+	<tr>
+	  <th>Date</th>
+	  <td tal:content="structure
+			   formatter:dateTime:view/rev1/__date__"></td>
+	  <td tal:content="structure
+			   formatter:dateTime:view/rev2/__date__"></td>
+	</tr>
+	<tr>
+	  <th>Note</th>
+	  <td tal:content="structure view/rev1/__note__|string:----"></td>
+	  <td tal:content="structure view/rev2/__note__|string:----"></td>
+	</tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="revision-data" tal:repeat="item view/compared">
+    <h3 tal:content="item/field/title" />
+    <div tal:content="item/field/description" />
+    <br />
+
+    <tal:block repeat="rec item/result" condition="item/result">
+      <tal:block content="structure rec" />
+      <br />
+    </tal:block>
+    <p tal:condition="not:item/result">
+      Field is not changed.
+    </p>
+  </div>
+
+  <input type="button" class="z-form-button" value="Back to revisions"
+	 onclick="window.location = 'revisions/'" />
+  
+</div>
