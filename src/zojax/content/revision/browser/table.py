@@ -76,8 +76,7 @@ class PrincipalColumn(AuthorNameColumn):
     cssClass = 'ctb-revisioin-principal'
 
     def getPrincipal(self, content):
-        #return self.content.getPrincipal()
-        return None
+        return self.content.getPrincipal()
 
 
 class DateColumn(AttributeColumn):

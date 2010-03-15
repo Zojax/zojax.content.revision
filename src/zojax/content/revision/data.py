@@ -27,6 +27,8 @@ from zope.security.management import queryInteraction
 from zope.lifecycleevent.interfaces import IObjectModifiedEvent
 from zope.app.security.protectclass import protectName, protectSetAttribute
 
+from zojax.authentication.utils import getPrincipal
+
 from interfaces import IContentRevision
 
 
@@ -104,6 +106,8 @@ class ContentRevision(Persistent):
         self.__name__ = name
         self.__parent__ = parent
 
+    def getPrincipal(self):
+        return getPrincipal(self.__principal__)
 
 def getContentRevision(revision):
     return revision

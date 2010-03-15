@@ -67,6 +67,9 @@ class IContentRevision(interface.Interface):
         title = _('Modification note'),
         default = u'',
         required = False)
+    
+    def getPrincipal():
+        """get principal"""
 
 
 class IFieldDiff(interface.Interface):
