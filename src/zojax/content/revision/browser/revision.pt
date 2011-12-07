@@ -1,13 +1,15 @@
 <h1 class="z-content-title">
-  Revision <tal:block content="view/revidtitle" />,
+  <tal:block i18n:translate="">
+  Revision <tal:block i18n:name="revidtitle" content="view/revidtitle" />,
+  </tal:block>
 
-  <tal:block tal:condition="view/active">
+  <tal:block tal:condition="view/active" i18n:translate="">
     active revision</tal:block>
-  <tal:block tal:condition="not:view/active">
+  <tal:block tal:condition="not:view/active" i18n:translate="">
     inactive revision</tal:block>
 </h1>
 <div class="z-content-description">
-  <span class="discreet">Note:</span>
+  <span class="discreet" i18n:translate="">Note:</span>
   <tal:block content="context/__note__|string:No comment" /></div>
 <br />
 
@@ -24,7 +26,7 @@
   <br />
   <div class="z-form-controls">
     <hr />
-    <input type="submit" name="form.button.makeactive" class="z-form-button"
+    <input type="submit" name="form.button.makeactive" class="z-form-button" i18n:attributes="value"
 	   value="Activate revision" />
   </div>
 </form>

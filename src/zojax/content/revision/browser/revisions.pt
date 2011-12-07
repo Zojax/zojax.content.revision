@@ -1,5 +1,5 @@
 <tal:block  tal:condition="not:view/compared|nothing">
-  <h1>Revisions for: <tal:block content="context/title" /></h1>
+  <h1 i18n:translate="">Revisions for: <tal:block i18n:name="title" content="context/title" /></h1>
   <tal:block tal:content="structure pageelement:content.byline" />
   <tal:block tal:content="structure pageelement:content.description" />
   <br />
@@ -9,14 +9,14 @@
 
     <div class="z-form-controls" tal:condition="view/revisions">
       <hr />
-      <input type="submit" name="form.button.compare" value="Compare" 
+      <input type="submit" name="form.button.compare" value="Compare"  i18n:attributes="value"
 	     class="z-form-button" />
     </div>
   </form>
 </tal:block>
 
 <div tal:condition="view/compared|nothing">
-  <h1>Compare revisions for: <tal:block content="context/title" /></h1>
+  <h1 i18n:translate="">Compare revisions for: <tal:block i18n:name="title" content="context/title" /></h1>
   <tal:block tal:content="structure pageelement:content.byline" />
   <tal:block tal:content="structure pageelement:content.description" />
   <br />
@@ -26,20 +26,20 @@
       <thead>
 	<tr>
 	  <th></th>
-	  <th>Revision <tal:block content="view/rev1/__name__" /></th>
-	  <th>Revision <tal:block content="view/rev2/__name__" /></th>
+	  <th i18n:translate="">Revision <tal:block i18n:name="name" content="view/rev1/__name__" /></th>
+	  <th i18n:translate="">Revision <tal:block i18n:name="name" content="view/rev2/__name__" /></th>
 	</tr>
       </thead>
       <tbody>
 	<tr>
-	  <th>Date</th>
+	  <th i18n:translate="">Date</th>
 	  <td tal:content="structure
 			   formatter:dateTime:view/rev1/__date__"></td>
 	  <td tal:content="structure
 			   formatter:dateTime:view/rev2/__date__"></td>
 	</tr>
 	<tr>
-	  <th>Note</th>
+	  <th i18n:translate="">Note</th>
 	  <td tal:content="structure view/rev1/__note__|string:----"></td>
 	  <td tal:content="structure view/rev2/__note__|string:----"></td>
 	</tr>
@@ -61,7 +61,7 @@
     </p>
   </div>
 
-  <input type="button" class="z-form-button" value="Back to revisions"
+  <input type="button" class="z-form-button" value="Back to revisions" i18n:attributes="value"
 	 onclick="window.location = 'revisions/'" />
   
 </div>

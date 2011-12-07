@@ -1,4 +1,4 @@
-<h1>Working revision</h1>
+<h1 i18n:translate="">Working revision</h1>
 <br />
 
 <div class="z-content-preview">
@@ -12,7 +12,7 @@
       tal:attributes="action request/URL">
   <div class="z-form-control">
     <br />
-    <input type="submit" class="z-form-standalonebtn"
+    <input type="submit" class="z-form-standalonebtn" i18n:attributes="value"
 	   name="form.buttons.publish" value="Publish revision" />
   </div>
 </form>
