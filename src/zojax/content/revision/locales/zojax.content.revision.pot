@@ -1,0 +1,92 @@
+##############################################################################
+#
+# Copyright (c) 2003-2004 Zope Corporation and Contributors.
+# All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+##############################################################################
+msgid ""
+msgstr ""
+"Project-Id-Version: Development/Unknown\n"
+"POT-Creation-Date: Thu Dec  8 22:39:18 2011\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Zope 3 Developers <zope3-dev@zope.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: zope/app/locales/extract.py\n"
+
+#: src/zojax/content/revision/browser/actions.py:24
+#: src/zojax/content/revision/browser/revisions.py:51
+msgid "Content revisions"
+msgstr ""
+
+#: src/zojax/content/revision/browser/editcontent.py:40
+msgid "Content"
+msgstr ""
+
+#: src/zojax/content/revision/browser/editcontent.py:41
+msgid "Modify content"
+msgstr ""
+
+#: src/zojax/content/revision/browser/revision.py:52
+#: src/zojax/content/revision/browser/revision.py:98
+msgid "Revision has been activated."
+msgstr ""
+
+#: src/zojax/content/revision/browser/revisions.py:41
+#: src/zojax/content/revision/browser/table.py:38
+msgid "Revisions"
+msgstr ""
+
+#: src/zojax/content/revision/browser/revisions.py:83
+msgid "Please select revisions to compare."
+msgstr ""
+
+#: src/zojax/content/revision/browser/table.py:108
+msgid "Note"
+msgstr ""
+
+#: src/zojax/content/revision/browser/table.py:117
+msgid "Status"
+msgstr ""
+
+#: src/zojax/content/revision/browser/table.py:42
+msgid "No revisions."
+msgstr ""
+
+#: src/zojax/content/revision/browser/table.py:59
+msgid "Rev Id"
+msgstr ""
+
+#: src/zojax/content/revision/browser/table.py:75
+msgid "User"
+msgstr ""
+
+#: src/zojax/content/revision/browser/table.py:86
+msgid "Date"
+msgstr ""
+
+#: src/zojax/content/revision/browser/working.py:35
+msgid "Working Revision"
+msgstr ""
+
+#: src/zojax/content/revision/browser/working.py:50
+msgid "Revision has been published."
+msgstr ""
+
+#: src/zojax/content/revision/interfaces.py:67
+msgid "Modification note"
+msgstr ""
+
+#: src/zojax/content/revision/permissions.zcml:6
+msgid "View content revisions"
+msgstr ""
+
