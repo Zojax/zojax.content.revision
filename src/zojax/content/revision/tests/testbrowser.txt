@@ -1,0 +1,54 @@
+==============
+Visitors workspace
+==============
+
+    >>> from zope import interface, component, event
+    >>> from zope.app.component.hooks import setSite
+    >>> from zope.app.component.site import LocalSiteManager
+    >>> from zope.testbrowser.testing import Browser
+
+    >>> root = getRootFolder()
+    >>> setSite(root)
+
+
+    >>> admin = Browser()
+    >>> admin.addHeader("Authorization", "Basic mgr:mgrpw")
+    >>> admin.handleErrors = False
+    >>> admin.open('http://localhost/content/revisions/')
+    >>> 'No revisions.' in admin.contents
+        True
+
+    >>> from zope.lifecycleevent import ObjectModifiedEvent
+    >>> root['content'].title = u'Test Content modified'
+    >>> event.notify(ObjectModifiedEvent(root['content']))
+    >>> admin.open('http://localhost/content/workingrevision.html')
+    >>> print admin.contents
+    <!DOCTYPE ...
+    ...
+      <div id="z-portal-workspace"><div id="z-portal-viewspace"><div id="z-content"><h1>Working revision</h1><br /><div class="z-content-preview">
+      <div class="z-content-body"><div>Test Content modified</div></div>
+    </div><form action="http://localhost/content/workingrevision.html" method="post" enctype="multipart/form-data">
+      <div class="z-form-control">
+        <br />
+        <input type="submit" class="z-form-standalonebtn" name="form.buttons.publish" value="Publish revision" />
+      </div>
+    ...
+    </html>
+
+    >>> admin.getControl(name='form.buttons.publish').click()
+    >>> print admin.contents
+    <!DOCTYPE ...
+    ...
+        <div id="z-portal">
+      <div class="statusMessage">Revision has been published.</div>
+      <div id="z-portal-workspace"><div id="z-portal-viewspace"><div id="z-content" class="">
+      <div class="z-content-body"><div>Test Content modified</div></div>
+    </div></div></div>
+    </div>
+    ...
+    </html>
+
+    >>> print [r for r in root['content'].revisions]
+        [<zojax.content.revision.tests.tests.ContentRevision<Content> object at ...>]
+
+    >>> setSite(None)

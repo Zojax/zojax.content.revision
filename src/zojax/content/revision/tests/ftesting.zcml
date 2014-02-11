@@ -1,0 +1,84 @@
+<configure
+   xmlns="http://namespaces.zope.org/zope"
+   xmlns:zojax="http://namespaces.zope.org/zojax"
+   i18n_domain="zojax.content.revision">
+
+  <include package="zojax.autoinclude" file="meta.zcml" />
+  <includeAllDependencies package="zojax.content.revision" extras="test" />
+  <include package="zope.app.schema" />
+
+  <securityPolicy component="zojax.security.securitypolicy.SecurityPolicy" />
+
+  <role id="zope.Anonymous" title="Everybody"
+        description="All users have this role implicitly" />
+  <role id="zope.Manager" title="Site Manager" />
+
+    <class class="zojax.content.revision.tests.tests.Content">
+      <implements interface="zojax.ownership.interfaces.IOwnerAware" />
+      <implements interface="zojax.activity.interfaces.IActivityAware" />
+      <implements interface="zojax.content.type.interfaces.IShareableContent" />
+      <implements interface="zojax.content.type.interfaces.ISearchableContent" />
+      <implements interface="zojax.content.type.interfaces.ITitleBasedName" />
+
+
+      <allow attributes="getPrincipal"/>
+      <require
+	 permission="zope.View"
+	 interface="zojax.content.revision.tests.tests.IContent
+		    zojax.content.type.interfaces.IItemPublishing" />
+
+      <require
+	 permission="zojax.ModifyContent"
+	 set_schema="zojax.content.revision.tests.tests.IContent
+		     zojax.content.type.interfaces.IItemPublishing"
+	 interface="zojax.content.revision.interfaces.IRevisionsManagement" />
+
+      <require
+	 permission="zojax.ViewContentRevisions"
+	 interface="zojax.content.revision.interfaces.IRevisions" />
+    </class>
+
+  <zojax:pagelet
+     name="index.html"
+     for="*"
+     template="test.pt"
+     provides="zojax.content.type.interfaces.IContentView"
+     permission="zope.Public" />
+
+  <!-- Replace the following directive if you don't want public access -->
+  <grant permission="zope.View"
+         role="zope.Anonymous" />
+
+  <grant permission="zope.app.dublincore.view"
+         role="zope.Anonymous" />
+
+  <!-- Principals -->
+  <unauthenticatedPrincipal
+      id="zope.anybody"
+      title="Unauthenticated User" />
+
+  <!-- Principal that tests generally run as -->
+  <principal
+      id="zope.mgr"
+      title="Manager"
+      login="mgr"
+      password="mgrpw" />
+
+  <principal
+      id="zope.user"
+      title="User"
+      login="user"
+      password="userpw" />
+
+  <grant role="zope.Manager" principal="zope.mgr" />
+  <grant role="content.Owner" principal="zope.mgr" />
+
+  <grant permission="zojax.ViewContentRevisions" role="zope.Manager"/>
+  <grant permission="zojax.ModifyContent" role="zope.Manager"/>
+
+  <grantAll role="zope.Manager" />
+
+
+
+
+</configure>
